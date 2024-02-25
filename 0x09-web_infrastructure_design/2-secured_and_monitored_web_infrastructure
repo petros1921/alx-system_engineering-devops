@@ -1,0 +1,45 @@
+To design a three-server web infrastructure that hosts the website www.foobar.com while meeting the specified requirements, including security, encrypted traffic, and monitoring, follow the outline below:
+
+1. Servers:
+   - Draw three rectangles on the whiteboard, representing the three servers. Label them as Server 1, Server 2, and Server 3.
+
+2. Firewalls:
+   - Add three firewall components to the infrastructure, one for each server. Draw rectangles labeled as Firewall 1, Firewall 2, and Firewall 3, and connect them to their respective servers using arrows.
+   - Explain that firewalls are used to protect the servers from unauthorized access, malicious attacks, and to enforce security policies.
+
+3. SSL Certificate:
+   - Add an SSL certificate component to enable serving www.foobar.com over HTTPS.
+   - Draw a rectangle labeled as SSL Certificate and connect it to the Load Balancer (explained in the next step) and the Domain Name (www.foobar.com) using arrows.
+
+4. Load Balancer:
+   - Draw a rectangle labeled as Load Balancer and connect it to all three server rectangles using arrows.
+   - Explain that the load balancer distributes incoming traffic across multiple servers to ensure high availability and scalability.
+
+5. Web Server (Nginx):
+   - Inside each server rectangle, draw a smaller rectangle labeled as Nginx to represent the web server running Nginx.
+   - Connect the Load Balancer rectangle to the Nginx rectangles within each server using arrows.
+
+6. Application Server:
+   - Below the Nginx rectangle in each server, draw another rectangle labeled as Application Server to represent the application server.
+   - Connect the Nginx and Application Server rectangles within each server using arrows.
+
+7. Database (MySQL):
+   - Draw a cloud-like shape labeled as MySQL Database and connect it to each Application Server rectangle using arrows.
+   - Explain that the database stores and retrieves data for the website.
+
+8. Monitoring:
+   - Add three monitoring client components, one for each server. Draw rectangles labeled as Monitoring 1, Monitoring 2, and Monitoring 3, and connect them to their respective servers using arrows.
+   - Explain that monitoring is used to track the health, performance, and availability of the infrastructure and its components. The monitoring clients collect data and send it to a monitoring service like Sumo Logic.
+
+Issues with this infrastructure:
+
+1. Terminating SSL at the load balancer level:
+   - Explain that terminating SSL at the load balancer allows for SSL offloading, reducing the processing burden on the backend servers.
+
+2. Having only one MySQL server capable of accepting writes:
+   - Mention that having a single point of failure and potential bottleneck in the database can lead to performance issues and downtime.
+   - Suggest implementing a database replication or clustering solution to improve fault tolerance and scalability.
+
+3. Having servers with all the same components:
+   - Discuss that having identical components on every server can limit flexibility and increase maintenance complexity.
+   - Suggest considering a distributed architecture where different servers handle specific roles (e.g., web servers, application servers, database servers) for better scalability and fault tolerance.

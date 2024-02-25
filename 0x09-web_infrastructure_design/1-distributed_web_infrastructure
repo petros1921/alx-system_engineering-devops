@@ -1,0 +1,54 @@
+To design a three-server web infrastructure that hosts the website www.foobar.com, incorporating the mentioned requirements, here is an outline of the components and their roles:
+
+1. Web Server (Nginx):
+   - The web server handles incoming HTTP requests and serves static content. It can handle multiple concurrent connections efficiently.
+   - Nginx is used as the web server in this infrastructure.
+
+2. Application Server:
+   - The application server executes the server-side code and generates dynamic content.
+   - It receives requests from the web server, processes them, interacts with the database, and generates a response.
+   - It runs the application files or code base specific to the website.
+
+3. Load Balancer (HAproxy):
+   - The load balancer distributes incoming requests across multiple servers to balance the load and improve performance.
+   - HAproxy is a popular load balancing software used for this purpose.
+   - It is added to ensure high availability and scalability.
+
+4. Servers (Server 1 and Server 2):
+   - Two servers are added to provide redundancy and improve the infrastructure's reliability.
+   - Each server hosts a copy of the web server, application server, and application files.
+
+5. Database (MySQL):
+   - The database stores and manages the website's data.
+   - MySQL is used as the database management system.
+
+6. Distribution Algorithm:
+   - The load balancer is configured with a distribution algorithm, such as round-robin, to determine how requests are routed to the servers.
+   - Round-robin distributes requests evenly in a cyclic manner to each server in sequence.
+
+7. Active-Active vs. Active-Passive Setup:
+   - The load balancer enables an Active-Active setup, where both servers actively handle incoming requests simultaneously.
+   - In an Active-Active setup, both servers share the load and can serve requests independently.
+
+8. Primary-Replica (Master-Slave) Database Cluster:
+   - The database is configured as a Primary-Replica cluster, also known as a Master-Slave setup.
+   - The Primary node handles both reads and writes, while the Replica node(s) replicate data from the Primary node and handle read-only queries.
+   - The Primary node ensures data consistency and updates the Replica node(s) with any changes.
+
+9. Difference between Primary and Replica Nodes:
+   - The Primary node is responsible for handling read and write operations, maintaining data integrity, and synchronizing changes to the Replica node(s).
+   - The Replica node(s) replicate data from the Primary node and handle read-only queries, providing redundancy and scalability.
+
+Issues with this infrastructure:
+
+a) Single Point of Failure (SPOF):
+   - The load balancer could become a single point of failure if it fails or becomes unavailable.
+   - If any of the servers fail, it could impact the availability of the website.
+
+b) Security Issues:
+   - There is no mention of a firewall in this infrastructure, which could leave the servers and the database vulnerable to unauthorized access.
+   - HTTPS (HTTP Secure) is not implemented, which can expose sensitive data during communication.
+
+c) Lack of Monitoring:
+   - There is no mention of monitoring tools or processes to track the performance, availability, and health of the infrastructure.
+   - Monitoring is crucial for identifying and resolving issues promptly.

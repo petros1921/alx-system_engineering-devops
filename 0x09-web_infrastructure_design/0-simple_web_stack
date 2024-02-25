@@ -1,0 +1,25 @@
+To design a one-server web infrastructure that hosts the website reachable via www.foobar.com, here is an outline of the components and their roles:
+
+1. Server: A server is a computer or system that hosts and serves the website. It handles incoming requests, processes them, and sends back the appropriate responses. In this case, we have a single server that performs multiple roles.
+
+2. Domain Name: The domain name, in this case, is foobar.com. It serves as a human-readable address for the website. The user accesses the website by typing www.foobar.com in their browser.
+
+3. DNS Record: The www record in www.foobar.com is a DNS (Domain Name System) record called a CNAME record. It is used to associate the www subdomain with the IP address of the server. In this case, it points to the server IP 8.8.8.8.
+
+4. Web Server (Nginx): The web server handles incoming HTTP requests from the user's computer and serves static content, such as HTML, CSS, and images. It receives the request for www.foobar.com from the user, processes it, and returns the appropriate web page. Nginx is a popular web server software that can fulfill this role.
+
+5. Application Server: The application server is responsible for executing the server-side code and generating dynamic content. It receives requests from the web server, processes them, interacts with the database, and generates a response. It runs the application files or code base specific to the website.
+
+6. Application Files: The application files contain the code base that represents the website's logic and functionality. It could be written in a programming language like Python, PHP, or Ruby. The application server executes this code to generate dynamic content.
+
+7. Database (MySQL): The database stores and manages the website's data. It can be used to store user information, content, configurations, and more. MySQL is a popular relational database management system that can be used for this purpose.
+
+8. Communication: The server communicates with the user's computer over the internet using the HTTP(S) protocol. When the user requests www.foobar.com, their computer sends an HTTP request to the server's IP address (8.8.8.8). The server processes the request, generates a response, and sends it back to the user's computer over the internet.
+
+Issues with this infrastructure:
+
+a) Single Point of Failure (SPOF): Since the entire web infrastructure is hosted on a single server, if that server fails, becomes unavailable, or experiences issues, the website will go down. There is no redundancy or failover mechanism.
+
+b) Downtime during Maintenance: When maintenance is required, such as deploying new code or making changes to the web server or application server configurations, the website will experience downtime. During this time, the website will be unavailable.
+
+c) Limited Scalability: With a single server, the infrastructure cannot handle a significant increase in incoming traffic. If the website experiences a sudden surge in traffic, it may overload the server and cause performance issues or downtime.
